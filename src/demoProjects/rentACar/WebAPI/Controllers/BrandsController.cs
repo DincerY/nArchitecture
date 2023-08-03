@@ -22,14 +22,14 @@ namespace WebAPI.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetList([FromQuery]PageRequest pageRequest)
+        public async Task<IActionResult> GetList([FromQuery] PageRequest pageRequest)
         {
             GetListBrandQuery getListBrandQuery = new()
             {
                 PageRequest = pageRequest
             };
 
-            BrandListModel result =await MediatoR.Send(getListBrandQuery);
+            BrandListModel result = await MediatoR.Send(getListBrandQuery);
             return Ok(result);
         }
     }
