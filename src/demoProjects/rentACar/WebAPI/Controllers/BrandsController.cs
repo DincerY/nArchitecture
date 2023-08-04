@@ -1,6 +1,7 @@
 ﻿using Application.Features.Brands.Commands.CreateBrand;
 using Application.Features.Brands.Dtos;
 using Application.Features.Brands.Models;
+using Application.Features.Brands.Queries.GetByIdBrand;
 using Application.Features.Brands.Queries.GetListBrand;
 using Core.Application.Requests;
 using MediatR;
@@ -29,9 +30,16 @@ namespace WebAPI.Controllers
                 PageRequest = pageRequest
             };
 
-            //BrandListModel result = await MediatoR.Send(getListBrandQuery);
-            //return Ok(result);
-            return null;
+            BrandListModel result = await MediatoR.Send(getListBrandQuery);
+            return Ok(result);
+        }
+
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetById([FromRoute] int id)
+        {
+            GetByIdBrandQuery getListBrandQuery = new() { Id = id };
+            BrandGetByIdDto brandGetByIdDto = await MediatoR.Send(getListBrandQuery);
+            return Ok(brandGetByIdDto);
         }
     }
 }
