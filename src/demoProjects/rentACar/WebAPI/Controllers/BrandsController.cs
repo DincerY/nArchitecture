@@ -29,8 +29,9 @@ namespace WebAPI.Controllers
                 PageRequest = pageRequest
             };
 
-            BrandListModel result = await MediatoR.Send(getListBrandQuery);
-            return Ok(result);
+            //BrandListModel result = await MediatoR.Send(getListBrandQuery);
+            //return Ok(result);
+            return null;
         }
     }
 }
