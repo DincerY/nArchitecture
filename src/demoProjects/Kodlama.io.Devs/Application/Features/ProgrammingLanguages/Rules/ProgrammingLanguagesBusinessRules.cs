@@ -38,5 +38,19 @@ namespace Application.Features.ProgrammingLanguages.Rules
             if (programmingLanguage == null)
                 throw new BusinessException("Deleted programming language does not exist");
         }
+        public void ProgrammingLanguageShouldExistWhenUpdated(ProgrammingLanguage programmingLanguage)
+        {
+            if (programmingLanguage == null)
+                throw new BusinessException("Updated programming language does not exist");
+        }
+
+        public async Task ProgrammingLanguageNameCanNotBeDuplicatedWhenUpdated(string name)
+        {
+            IPaginate<ProgrammingLanguage> programmingLanguages = await _programmingLanguageRepository.GetListAsync(p => p.Name == name);
+            if (programmingLanguages.Items.Any())
+            {
+                throw new BusinessException("Programming Language name exist");
+            }
+        }
     }
 }
