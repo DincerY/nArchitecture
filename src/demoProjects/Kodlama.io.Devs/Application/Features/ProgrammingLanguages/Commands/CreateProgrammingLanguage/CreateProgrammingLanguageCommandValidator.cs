@@ -7,7 +7,7 @@ namespace Application.Features.ProgrammingLanguages.Commands.CreateProgrammingLa
     {
         public CreateProgrammingLanguageCommandValidator()
         {
-            RuleFor(p => p.Name).NotEmpty().MaximumLength(1);
+            RuleFor(p => p.Name).NotEmpty().MinimumLength(1);
         }
     }
 }

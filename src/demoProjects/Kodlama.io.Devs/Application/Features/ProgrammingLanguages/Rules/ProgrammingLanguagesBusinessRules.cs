@@ -27,5 +27,16 @@ namespace Application.Features.ProgrammingLanguages.Rules
                 throw new BusinessException("Programming Language name exist");
             }
         }
+
+        public void ProgrammingLanguageShouldExistWhenRequested(ProgrammingLanguage programmingLanguage)
+        {
+            if (programmingLanguage == null)
+                throw new BusinessException("Requested programming language does not exist");
+        }
+        public void ProgrammingLanguageShouldExistWhenDeleted(ProgrammingLanguage programmingLanguage)
+        {
+            if (programmingLanguage == null)
+                throw new BusinessException("Deleted programming language does not exist");
+        }
     }
 }
